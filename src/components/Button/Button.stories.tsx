@@ -1,16 +1,18 @@
 import React from "react";
 import { Button } from "./Button";
-import { ComponentMeta, ComponentStory } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 
-export default {
-  title: "Button",
+const meta: Meta<typeof Button> = {
   component: Button,
-} as ComponentMeta<typeof Button>;
+};
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+export default meta;
 
-export const Default = Template.bind({});
+type Story = StoryObj<typeof Button>;
 
-Default.args = {
-  children: "Hello World",
+export const Primary: Story = {
+  args: {
+    children: "Hello World",
+  },
+  render: ({ children }) => <Button>{children}</Button>,
 };

@@ -6,6 +6,7 @@ import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
 import dts from "rollup-plugin-dts";
 import packageJson from "./package.json";
+import css from "rollup-plugin-import-css";
 
 const rollupConfig = [
   {
@@ -26,9 +27,11 @@ const rollupConfig = [
     plugins: [
       resolve(),
       external(),
+      css(),
       typescript(),
       commonjs(),
       babel({
+        babelHelpers: "bundled",
         exclude: "node_modules/**",
         presets: ["@babel/env", "@babel/preset-react"],
       }),
@@ -39,7 +42,7 @@ const rollupConfig = [
   {
     input: "src/index.ts",
     output: [{ file: packageJson.types, format: "es" }],
-    plugins: [dts.default()],
+    plugins: [css(), dts.default()],
   },
 ];
 

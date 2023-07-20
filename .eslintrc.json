@@ -21,5 +21,6 @@
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "overrides": [{ "files": ["*.config.cjs"], "env": { "node": true } }]
 }
